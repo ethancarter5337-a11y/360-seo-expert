@@ -1,0 +1,92 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>360 SEO Expert — Free On-Page SEO Toolkit</title>
+<meta name="description" content="A free, browser-based SEO toolkit for on-page audits and content brief planning.">
+<style>
+:root{--bg:#0b1020;--panel:#131c31;--panel2:#19243b;--line:#293653;--text:#edf3ff;--muted:#9aabc8;--purple:#8b7cff;--cyan:#4dd8d0;--green:#5bd69b;--red:#ff778b;--amber:#f4c66b}
+*{box-sizing:border-box}body{margin:0;background:radial-gradient(circle at 10% 0%,#20234b 0,transparent 32%),var(--bg);color:var(--text);font:15px/1.55 Inter,ui-sans-serif,system-ui,-apple-system,Segoe UI,sans-serif}
+.wrap{max-width:1180px;margin:auto;padding:28px 20px 60px}.top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:28px}.brand{display:flex;align-items:center;gap:13px}.logo{width:44px;height:44px;border-radius:14px;background:linear-gradient(135deg,var(--purple),var(--cyan));display:grid;place-items:center;color:#09101e;font-weight:900;font-size:20px}.brand h1{font-size:19px;margin:0}.brand p{margin:2px 0 0;color:var(--muted);font-size:12px}.free{border:1px solid #286b61;color:#8ff1d4;background:#102c2b;padding:7px 12px;border-radius:30px;font-size:12px;font-weight:700}
+.hero{margin:20px 0 26px}.hero h2{font-size:clamp(27px,4vw,40px);line-height:1.12;margin:0 0 10px;letter-spacing:-1px}.hero p{margin:0;color:var(--muted);max-width:700px}
+.tabs{display:flex;gap:8px;margin:25px 0 16px;flex-wrap:wrap}.tab{border:1px solid var(--line);background:var(--panel);color:var(--muted);padding:10px 16px;border-radius:10px;cursor:pointer;font-weight:650}.tab.active{background:#28264d;color:#fff;border-color:#7168d7}
+.panel{background:linear-gradient(160deg,rgba(25,36,59,.98),rgba(16,24,42,.98));border:1px solid var(--line);border-radius:18px;padding:22px;box-shadow:0 16px 45px #0003}.grid{display:grid;grid-template-columns:1.1fr .9fr;gap:16px}.field{margin:0 0 15px}label{display:block;color:#dce6fa;font-weight:650;margin:0 0 7px;font-size:13px}input,textarea{width:100%;border:1px solid #34425f;border-radius:10px;background:#0d1528;color:var(--text);padding:12px 13px;font:inherit;outline:none}input:focus,textarea:focus{border-color:var(--purple);box-shadow:0 0 0 3px #8b7cff22}textarea{min-height:235px;resize:vertical}small,.hint{color:var(--muted);font-size:12px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:13px}.btn{border:0;border-radius:10px;padding:11px 17px;font-weight:750;cursor:pointer;background:linear-gradient(110deg,var(--purple),#6e9cff);color:white}.btn.secondary{background:#25334e;border:1px solid #3a4b6c;color:#dce6fa}.btn:disabled{opacity:.5;cursor:not-allowed}
+.statgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin:16px 0}.stat{background:#0e172a;border:1px solid var(--line);border-radius:12px;padding:13px}.stat strong{display:block;font-size:23px}.stat span{font-size:11px;color:var(--muted)}.results{margin-top:16px}.result{display:flex;justify-content:space-between;gap:14px;align-items:flex-start;padding:12px 0;border-bottom:1px solid #293653}.result:last-child{border:0}.result b{font-size:13px}.result p{margin:3px 0 0;color:var(--muted);font-size:12px}.pill{font-size:11px;font-weight:750;border-radius:30px;padding:4px 9px;white-space:nowrap}.pass{background:#12382e;color:#82e7b6}.warn{background:#3b3018;color:#f5d17d}.fail{background:#401f2a;color:#ff9cab}
+.section-title{font-size:16px;margin:0 0 12px}.output{white-space:pre-wrap;background:#0c1426;border:1px solid var(--line);border-radius:12px;padding:16px;min-height:140px;color:#dce6fa;font-size:13px}.hidden{display:none}.notice{border:1px solid #66572b;background:#2a2517;color:#e9d59b;padding:12px 14px;border-radius:10px;font-size:12px;margin-top:15px}.footer{margin-top:22px;color:var(--muted);font-size:12px;text-align:center}
+@media(max-width:780px){.grid{grid-template-columns:1fr}.statgrid{grid-template-columns:repeat(2,1fr)}.top{align-items:flex-start}.panel{padding:16px}}
+</style>
+</head>
+<body><main class="wrap">
+<header class="top"><div class="brand"><div class="logo">360</div><div><h1>360 SEO Expert</h1><p>Simple SEO checks. Clear next steps.</p></div></div><div class="free">100% FREE · NO API KEY</div></header>
+<section class="hero"><h2>Make every page more<br>search-friendly.</h2><p>A lightweight SEO workspace that runs in your browser. Audit pasted page HTML and build practical content briefs without signing up or entering API keys.</p></section>
+<nav class="tabs"><button class="tab active" data-tab="audit">On-Page Audit</button><button class="tab" data-tab="brief">Content Brief</button></nav>
+<section id="audit" class="panel">
+<h3 class="section-title">On-page SEO audit</h3><p class="hint">Paste the page's HTML source below. The analysis happens locally in this browser; this tool does not fetch the URL itself.</p>
+<div class="grid"><div><div class="field"><label for="pageUrl">Page URL (optional, for your reference)</label><input id="pageUrl" placeholder="https://example.com/page"></div><div class="field"><label for="keyword">Target keyword (optional)</label><input id="keyword" placeholder="e.g. bookkeeping services"></div><div class="field"><label for="htmlInput">HTML source</label><textarea id="htmlInput" placeholder="Paste the page source HTML here..."></textarea></div><div class="actions"><button class="btn" id="runAudit">Run SEO audit</button><button class="btn secondary" id="clearAudit">Clear</button></div></div><div><h3 class="section-title">Audit results</h3><div id="empty" class="output">Your audit results will appear here after you run the check.</div><div id="auditResults" class="hidden"><div class="statgrid"><div class="stat"><strong id="score">—</strong><span>Checks passed</span></div><div class="stat"><strong id="wordCount">—</strong><span>Word count</span></div><div class="stat"><strong id="h2Count">—</strong><span>H2 headings</span></div><div class="stat"><strong id="imageCount">—</strong><span>Images</span></div></div><div id="checks" class="results"></div><div class="actions"><button class="btn secondary" id="downloadAudit">Download report (.txt)</button></div></div></div></div>
+<div class="notice">Limitations: this is a browser-only HTML checker. It cannot crawl a live website, inspect server responses, measure Core Web Vitals, access Google Search Console/Analytics, or provide live keyword-volume data.</div>
+</section>
+<section id="brief" class="panel hidden">
+<h3 class="section-title">SEO content brief builder</h3><p class="hint">Create a structured first-draft outline from your target keyword and supporting terms.</p>
+<div class="grid"><div><div class="field"><label for="primary">Primary keyword</label><input id="primary" placeholder="e.g. Local SEO Services Manchester"></div><div class="field"><label for="secondary">Secondary / LSI keywords (one per line or comma-separated)</label><textarea id="secondary" style="min-height:130px" placeholder="Local SEO agency Manchester&#10;Google Business Profile optimisation&#10;local search rankings"></textarea></div><div class="field"><label for="audience">Audience / business type (optional)</label><input id="audience" placeholder="e.g. small businesses in Manchester"></div><div class="actions"><button class="btn" id="makeBrief">Generate content brief</button><button class="btn secondary" id="clearBrief">Clear</button></div></div><div><h3 class="section-title">Your content brief</h3><div id="briefOutput" class="output">Your outline will appear here.</div><div class="actions"><button class="btn secondary" id="copyBrief">Copy brief</button><button class="btn secondary" id="downloadBrief">Download (.txt)</button></div></div></div>
+</section>
+<div class="footer">360 SEO Expert · Free browser-based utility · No tracking or API keys</div>
+</main>
+<script>
+const $=id=>document.getElementById(id);
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.toggle('active',x===b));$('audit').classList.toggle('hidden',b.dataset.tab!=='audit');$('brief').classList.toggle('hidden',b.dataset.tab!=='brief')}));
+let reportText='';
+function addCheck(name,ok,detail,level){return {name,ok,detail,level:level||(ok?'pass':'warn')}}
+$('runAudit').onclick=()=>{
+ const source=$('htmlInput').value.trim();if(!source){alert('Please paste the page HTML source first.');return}
+ const doc=new DOMParser().parseFromString(source,'text/html'),kw=$('keyword').value.trim().toLowerCase();
+ const title=doc.querySelector('title')?.textContent.trim()||'',desc=doc.querySelector('meta[name="description" i]')?.content?.trim()||'',h1=[...doc.querySelectorAll('h1')],h2=[...doc.querySelectorAll('h2')],imgs=[...doc.images],missing=imgs.filter(i=>!i.hasAttribute('alt')||!i.getAttribute('alt').trim()).length;
+ const text=(doc.body?.innerText||doc.body?.textContent||'').replace(/\s+/g,' ').trim(),words=text?text.split(' ').length:0;
+ const canonical=!!doc.querySelector('link[rel="canonical"]'),viewport=!!doc.querySelector('meta[name="viewport" i]'),robots=doc.querySelector('meta[name="robots" i]')?.content||'Not specified',og=!!doc.querySelector('meta[property^="og:" i]'),links=doc.querySelectorAll('a[href]').length;
+ const checks=[
+ addCheck('Title tag',!!title,title?title.length+' characters'+(title.length>=30&&title.length<=60?' — within common guidance':' — review length'):'Missing title',title.length>=30&&title.length<=60?'pass':title?'warn':'fail'),
+ addCheck('Meta description',!!desc,desc?desc.length+' characters'+(desc.length>=120&&desc.length<=160?' — within common guidance':' — review length'):'Missing meta description',desc.length>=120&&desc.length<=160?'pass':desc?'warn':'fail'),
+ addCheck('H1 heading',h1.length===1,'Found '+h1.length+' H1 heading(s)',h1.length===1?'pass':'warn'),
+ addCheck('H2 headings',h2.length>0,'Found '+h2.length+' H2 heading(s)',h2.length>0?'pass':'warn'),
+ addCheck('Image alt text',missing===0,imgs.length+' image(s); '+missing+' missing or empty alt attribute(s)',missing===0?'pass':'warn'),
+ addCheck('Canonical URL',canonical,canonical?'Canonical tag found':'No canonical tag found'),
+ addCheck('Viewport meta',viewport,viewport?'Viewport meta found':'Viewport meta missing'),
+ addCheck('Open Graph metadata',og,og?'At least one Open Graph tag found':'No Open Graph tags found'),
+ addCheck('Content length',words>=300,words+' visible-text words'+(words>=300?'':' — check whether the page fully answers its intent'),words>=300?'pass':'warn'),
+ addCheck('Links',links>0,links+' linked elements found')
+ ];
+ if(kw){const escaped=kw.replace(/[.*+?^${}()|[\]\\]/g,'\\$&'),matches=text.toLowerCase().match(new RegExp(escaped,'g'))||[],density=words?(matches.length/words*100).toFixed(2):'0.00';checks.push(addCheck('Target keyword',matches.length>0,matches.length+' occurrences; approximate density '+density+'%',matches.length>0?'pass':'warn'))}
+ checks.push(addCheck('Robots directive',true,robots));
+ const passed=checks.filter(c=>c.level==='pass').length;
+ $('score').textContent=passed+'/'+checks.length;$('wordCount').textContent=words;$('h2Count').textContent=h2.length;$('imageCount').textContent=imgs.length;
+ $('checks').innerHTML=checks.map(c=>'<div class="result"><div><b>'+esc(c.name)+'</b><p>'+esc(c.detail)+'</p></div><span class="pill '+c.level+'">'+(c.level==='pass'?'PASS':c.level==='fail'?'MISSING':'REVIEW')+'</span></div>').join('');
+ $('empty').classList.add('hidden');$('auditResults').classList.remove('hidden');
+ reportText='360 SEO Expert — On-Page Audit\nURL: '+$('pageUrl').value+'\nTarget keyword: '+$('keyword').value+'\nChecks passed: '+passed+'/'+checks.length+'\nWord count: '+words+'\n\n'+checks.map(c=>c.name+' ['+c.level.toUpperCase()+']: '+c.detail).join('\n');
+};
+$('clearAudit').onclick=()=>{['pageUrl','keyword','htmlInput'].forEach(id=>$(id).value='');$('auditResults').classList.add('hidden');$('empty').classList.remove('hidden');reportText=''};
+function esc(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
+function save(name,text){const a=document.createElement('a'),u=URL.createObjectURL(new Blob([text],{type:'text/plain'}));a.href=u;a.download=name;a.click();URL.revokeObjectURL(u)}
+$('downloadAudit').onclick=()=>reportText&&save('360-seo-audit.txt',reportText);
+let briefText='';
+$('makeBrief').onclick=()=>{
+ const p=$('primary').value.trim();if(!p){alert('Please enter a primary keyword.');return}
+ const terms=$('secondary').value.split(/[\n,;]+/).map(x=>x.trim()).filter(Boolean),aud=$('audience').value.trim();
+ const title=p+' — Complete Guide';const outline=[
+ 'H1: '+title,
+ 'Introduction: Explain the reader problem, topic scope and what the page will help them understand.',
+ 'H2: What Is '+p+'?',
+ 'H2: Who Needs '+p+'?'+(aud?' Focus audience: '+aud+'.':''),
+ 'H2: Key Benefits and Practical Considerations',
+ 'H2: How the Process Works — Step by Step',
+ 'H2: What to Look for When Choosing a Provider',
+ 'H2: Common Mistakes and How to Avoid Them',
+ 'H2: Frequently Asked Questions',
+ 'H2: Conclusion and useful next step'
+ ];
+ if(terms.length){outline.splice(4,0,'H2: Important Related Topics\n'+terms.map(t=>'  • '+t).join('\n'))}
+ briefText='360 SEO Expert — Content Brief\nPrimary keyword: '+p+'\nAudience: '+(aud||'Define based on search intent')+'\n\nSuggested search intent: Usually informational or commercial investigation; confirm by reviewing the current search results for your target location.\n\nSuggested outline\n'+outline.map(x=>'- '+x).join('\n')+'\n\nWriting checklist\n- Answer the main search intent early.\n- Use the primary keyword naturally in the title, introduction and a relevant heading.\n- Add secondary terms only where they fit the subject.\n- Include original examples, practical details and first-hand expertise where available.\n- Avoid unsupported claims, keyword stuffing and repetitive wording.\n- Add internal links to genuinely relevant pages.\n- Check facts, headings, spelling, title and meta description before publishing.\n\nNote: This is an editorial starting point, not live SERP or keyword-volume research.';
+ $('briefOutput').textContent=briefText;
+};
+$('clearBrief').onclick=()=>{['primary','secondary','audience'].forEach(id=>$(id).value='');$('briefOutput').textContent='Your outline will appear here.';briefText=''};
+$('copyBrief').onclick=()=>{if(briefText)navigator.clipboard.writeText(briefText)};
+$('downloadBrief').onclick=()=>briefText&&save('360-seo-content-brief.txt',briefText);
+</script></body></html>
